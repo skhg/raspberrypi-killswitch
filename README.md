@@ -17,3 +17,4 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 ## References
 https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
+https://www.instructables.com/id/Using-a-RPi-to-Control-an-RGB-LED/
