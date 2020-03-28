@@ -13,3 +13,7 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 ## Assembly Instructions
 
 ## Running the software
+
+## References
+https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
