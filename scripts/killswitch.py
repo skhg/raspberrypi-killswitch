@@ -3,9 +3,9 @@
 import time
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 
-redPin   = 11
+redPin   = 15
 greenPin = 13
-bluePin  = 15
+bluePin  = 11
 
 def lightsCycle():
     GPIO.output(redPin, GPIO.HIGH)
