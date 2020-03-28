@@ -7,21 +7,24 @@ redPin   = 11
 greenPin = 13
 bluePin  = 15
 
-def lightsOn():
+def lightsCycle():
     GPIO.output(redPin, GPIO.HIGH)
-    GPIO.output(greenPin, GPIO.HIGH)
-    GPIO.output(bluePin, GPIO.HIGH)
-
-def lightsOff():
+    time.sleep(1)
     GPIO.output(redPin, GPIO.LOW)
+
+
+    GPIO.output(greenPin, GPIO.HIGH)
+    time.sleep(1)
     GPIO.output(greenPin, GPIO.LOW)
+
+    GPIO.output(bluePin, GPIO.HIGH)
+    time.sleep(1)
     GPIO.output(bluePin, GPIO.LOW)
 
 def button_callback(channel):
     print("Button was pushed!")
-    lightsOn()
+    lightsCycle()
     time.sleep(5)
-    lightsOff()
 
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
