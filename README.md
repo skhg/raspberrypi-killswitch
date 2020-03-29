@@ -51,7 +51,17 @@ sudo systemctl restart shairport-sync
 
 I also want to know when music is playing and make use of the 3-colour LED module. So the `shairport-sync` config file comes in handy here. It is set up to call my `lightControl.py` script whenever music starts or stops.
 
+Note: To control GPIO from `shairport-sync`, its user must be in the `gpio` group. This was also a factor in [another project](https://github.com/skhg/shairport-power). Run this command to fix it if you have problems:
+
+```
+sudo adduser shairport-sync gpio
+
+```
+
 ## References
-https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
-https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
-https://www.instructables.com/id/Using-a-RPi-to-Control-an-RGB-LED/
+
+Some useful references which could help when doing this project
+
+* https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+* https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
+* https://www.instructables.com/id/Using-a-RPi-to-Control-an-RGB-LED/
