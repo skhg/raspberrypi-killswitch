@@ -1,43 +1,66 @@
 #!/usr/bin/env python
 
+import os
 import time
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 
-redPin   = 15
-greenPin = 13
-bluePin  = 11
+RED_PIN   = 15
+GREEN_PIN = 13
+BLUE_PIN  = 11
 
-def lightsCycle():
-    GPIO.output(redPin, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(redPin, GPIO.LOW)
-
-
-    GPIO.output(greenPin, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(greenPin, GPIO.LOW)
-
-    GPIO.output(bluePin, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(bluePin, GPIO.LOW)
-
-def button_callback(channel):
-    print("Button was pushed!")
-    lightsCycle()
-    time.sleep(5)
+INPUT_PIN = 10
 
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
 
-GPIO.setup(redPin, GPIO.OUT)
-GPIO.setup(greenPin, GPIO.OUT)
-GPIO.setup(bluePin, GPIO.OUT)
+GPIO.setup(RED_PIN, GPIO.OUT)
+GPIO.setup(GREEN_PIN, GPIO.OUT)
+GPIO.setup(BLUE_PIN, GPIO.OUT)
 
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
-GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback) # Setup event on pin 10 rising edge
+def lights_off():
+    GPIO.output(RED_PIN, GPIO.LOW)
+    GPIO.output(GREEN_PIN, GPIO.LOW)
+    GPIO.output(BLUE_PIN, GPIO.LOW)
 
-message = input("Press enter to quit\n\n") # Run until someone presses enter
+def light_on(chosenLight):
+    GPIO.output(chosenLight, GPIO.HIGH)
+
+def lights_cycle():
+    lights_off()
+    light_on(RED_PIN)
+    time.sleep(2)
+
+    lights_off()
+    light_on(GREEN_PIN)
+    time.sleep(2)
+
+    lights_off()
+    light_on(BLUE_PIN)
+    time.sleep(2)
+
+    lights_off()
+
+def on_button_pushed(channel):
+    print("Killswitch pushed!")
+
+    lights_off()
+    light_on(RED_PIN)
+
+    os.system('~/.killswitch')
+
+    time.sleep(5)
+
+    lights_off()
+    light_on(BLUE_PIN)
+    time.sleep(2)
+
+    lights_off()
+
+GPIO.add_event_detect(INPUT_PIN, GPIO.RISING, callback=on_button_pushed) # Setup event on pin 10 rising edge
+
+message = input("Press enter to quit\n\n") # Run until someone presses enter (i.e. forever)
 
 GPIO.cleanup() # Clean up
 
