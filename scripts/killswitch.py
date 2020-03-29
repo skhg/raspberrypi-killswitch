@@ -17,7 +17,7 @@ GPIO.setup(RED_PIN, GPIO.OUT)
 GPIO.setup(GREEN_PIN, GPIO.OUT)
 GPIO.setup(BLUE_PIN, GPIO.OUT)
 
-GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set the initial value to be pulled low (meaning OFF by default)
 
 def lights_off():
     GPIO.output(RED_PIN, GPIO.LOW)
@@ -50,7 +50,7 @@ def on_button_pushed(channel):
 
     print("Running the kill script...")
 
-    os.system('~/.killswitch')
+    os.system('~/.killswitch') # User-defined executable script here which can do anything
 
     print("Kill script completed.")
 
@@ -64,10 +64,10 @@ def on_button_pushed(channel):
 
 lights_cycle()
 
-GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=on_button_pushed) # Setup event on pin 10 rising edge
+GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=on_button_pushed) # On any kind of event for the input pin, trigger the callback
 
 while(True):
-    time.sleep(1) # run forever
+    time.sleep(1) # Just run forever
 
-GPIO.cleanup() # Clean up
+GPIO.cleanup()
 

@@ -3,7 +3,6 @@
 import sys
 import RPi.GPIO as GPIO
 
-
 # The PIN Numbers - Not the GPIO numbers. See central numbers on https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
 RED_PIN = 15
 GREEN_PIN = 13
@@ -16,12 +15,12 @@ GPIO.setup(RED_PIN, GPIO.OUT)
 GPIO.setup(GREEN_PIN, GPIO.OUT)
 GPIO.setup(BLUE_PIN, GPIO.OUT)
 
-def printHelp(exitCode):
-    print("Supply a single parameter for colour name [RED, GREEN, BLUE] or OFF.")
+def printHelpAndExit(exitCode):
+    print("Supply a single parameter for colour name [RED, GREEN, BLUE, WHITE] or OFF.")
     exit(exitCode)
 
 if(len(sys.argv) < 2):
-    printHelp(1)
+    printHelpAndExit(1)
 
 def lightsOff():
     GPIO.output(RED_PIN, GPIO.LOW)
@@ -63,4 +62,4 @@ if(sys.argv[1] == "OFF"):
     lightsOff()
     exit(0)
 
-printHelp(2)
+printHelpAndExit(2)
