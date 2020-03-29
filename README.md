@@ -10,10 +10,10 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 <img src="images/IMG_2508.jpeg" width="425" title="Button"> <img src="images/IMG_2518.jpeg" width="425" title="Full thing">
 
 ## Materials required
-* Raspberry Pi Model 3
-* A button
+* [Raspberry Pi Model 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+* A [button](https://www.amazon.de/dp/B0814N7CH3/ref=sr_1_11?keywords=arduino+taster&qid=1585509555&sr=8-11)
 * A cap from a moisturiser jar
-* A 3-colour LED module
+* A [3-colour LED module](https://www.amazon.de/dp/B07V6YSGC9/ref=sr_1_3?keywords=arduino+rgb+led+modul&qid=1585509606&sr=8-3)
 * Some ribbon cable
 * A 200Ω resistor
 * Soldering iron
@@ -37,6 +37,19 @@ Once this was put together, it was as easy as connecting the ribbon cable up, an
 <img src="images/IMG_2519.jpeg" title="Installed">
 
 ## Running the software
+Requirements: An executable script to do the "killing" must be present at `~/.killswitch`
+
+The software is made of two Python scripts. One is a [event listener](scripts/killswitch.py) that runs forever, and waits for an interrupt on the GPIO input pin. The other is a [utility](scripts/lightControl.py) that can be run from anywhere, to set the currently displayed light colour.
+
+The listener is triggered by the GPIO interrupt on pin 10. When that happens, the killswitch script executes the contents of `~/.killswitch`. In my case I want to kill my streaming music server so the content of `~/.killswitch` is:
+
+```sh
+#!/usr/bin/env bash
+
+sudo systemctl restart shairport-sync
+```
+
+I also want to know when music is playing and make use of the 3-colour LED module. So the `shairport-sync` config file comes in handy here. It is set up to call my `lightControl.py` script whenever music starts or stops.
 
 ## References
 https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
