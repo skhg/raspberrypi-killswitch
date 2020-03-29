@@ -17,7 +17,7 @@ GPIO.setup(GREEN_PIN, GPIO.OUT)
 GPIO.setup(BLUE_PIN, GPIO.OUT)
 
 def printHelp(exitCode):
-    print("Supply a single parameter for colour name [RED, GREEN, BLUE, WHITE] or OFF.")
+    print("Supply a single parameter for colour name [RED, GREEN, BLUE] or OFF.")
     exit(exitCode)
 
 if(len(sys.argv) < 2):
@@ -40,15 +40,15 @@ if(sys.argv[1] == "RED"):
 
 if(sys.argv[1] == "GREEN"):
 	print("Green light ON")
-    	lightsOff()
-    	lightOn(GREEN_PIN)
-    	exit(0)
+    lightsOff()
+    lightOn(GREEN_PIN)
+    exit(0)
 
 if(sys.argv[1] == "BLUE"):
 	print("Blue light ON")
-    	lightsOff()
-    	lightOn(BLUE_PIN)
-    	exit(0)
+    lightsOff()
+    lightOn(BLUE_PIN)
+    exit(0)
 
 if(sys.argv[1] == "WHITE"):
 	print("White light ON")
@@ -60,7 +60,7 @@ if(sys.argv[1] == "WHITE"):
 
 if(sys.argv[1] == "OFF"):
 	print("Lights OFF")
-    	lightsOff()
-    	exit(0)
+    lightsOff()
+    exit(0)
 
 printHelp(2)
