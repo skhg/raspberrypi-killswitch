@@ -62,6 +62,8 @@ def on_button_pushed(channel):
 
     lights_off()
 
+lights_cycle()
+
 GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=on_button_pushed) # Setup event on pin 10 rising edge
 
 message = input("Press enter to quit\n\n") # Run until someone presses enter (i.e. forever)
