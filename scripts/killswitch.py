@@ -67,7 +67,7 @@ lights_cycle()
 GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=on_button_pushed) # Setup event on pin 10 rising edge
 
 while(True):
-    sleep(1) # run forever
+    time.sleep(1) # run forever
 
 GPIO.cleanup() # Clean up
 
