@@ -50,4 +50,9 @@ if(sys.argv[1] == "BLUE"):
     	lightOn(BLUE_PIN)
     	exit(0)
 
+if(sys.argv[1] == "OFF"):
+	print("Lights OFF")
+    	lightsOff()
+    	exit(0)
+
 printHelp(2)
