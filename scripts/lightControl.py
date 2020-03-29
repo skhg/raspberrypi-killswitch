@@ -21,7 +21,7 @@ def printHelp(exitCode):
     exit(exitCode)
 
 if(len(sys.argv) < 2):
-	printHelp(1)
+    printHelp(1)
 
 def lightsOff():
     GPIO.output(RED_PIN, GPIO.LOW)
@@ -33,25 +33,25 @@ def lightOn(chosenLight):
 
 
 if(sys.argv[1] == "RED"):
-	print("Red light ON")
-	lightsOff()
-	lightOn(RED_PIN)
-	exit(0)
+    print("Red light ON")
+    lightsOff()
+    lightOn(RED_PIN)
+    exit(0)
 
 if(sys.argv[1] == "GREEN"):
-	print("Green light ON")
+    print("Green light ON")
     lightsOff()
     lightOn(GREEN_PIN)
     exit(0)
 
 if(sys.argv[1] == "BLUE"):
-	print("Blue light ON")
+    print("Blue light ON")
     lightsOff()
     lightOn(BLUE_PIN)
     exit(0)
 
 if(sys.argv[1] == "WHITE"):
-	print("White light ON")
+    print("White light ON")
     lightsOff()
     lightOn(BLUE_PIN)
     lightOn(RED_PIN)
@@ -59,7 +59,7 @@ if(sys.argv[1] == "WHITE"):
     exit(0)
 
 if(sys.argv[1] == "OFF"):
-	print("Lights OFF")
+    print("Lights OFF")
     lightsOff()
     exit(0)
 
