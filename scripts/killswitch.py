@@ -48,7 +48,11 @@ def on_button_pushed(channel):
     lights_off()
     light_on(RED_PIN)
 
+    print("Running the kill script...")
+
     os.system('~/.killswitch')
+
+    print("Kill script completed.")
 
     time.sleep(5)
 
