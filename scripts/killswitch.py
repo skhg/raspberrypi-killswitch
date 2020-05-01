@@ -17,7 +17,7 @@ GPIO.setup(RED_PIN, GPIO.OUT)
 GPIO.setup(GREEN_PIN, GPIO.OUT)
 GPIO.setup(BLUE_PIN, GPIO.OUT)
 
-GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set the initial value to be pulled low (meaning OFF by default)
+GPIO.setup(INPUT_PIN, GPIO.IN)
 
 def lights_off():
     GPIO.output(RED_PIN, GPIO.LOW)
@@ -43,24 +43,25 @@ def lights_cycle():
     lights_off()
 
 def on_button_pushed(channel):
-    print("Killswitch pushed!")
+    if GPIO.input(channel) == GPIO.HIGH:
+        print("Killswitch pushed!")
 
-    lights_off()
-    light_on(RED_PIN)
+        lights_off()
+        light_on(RED_PIN)
 
-    print("Running the kill script...")
+        print("Running the kill script...")
 
-    os.system('~/.killswitch') # User-defined executable script here which can do anything
+        os.system('~/.killswitch') # User-defined executable script here which can do anything
 
-    print("Kill script completed.")
+        print("Kill script completed.")
 
-    time.sleep(5)
+        time.sleep(5)
 
-    lights_off()
-    light_on(BLUE_PIN)
-    time.sleep(2)
+        lights_off()
+        light_on(BLUE_PIN)
+        time.sleep(2)
 
-    lights_off()
+        lights_off()
 
 lights_cycle()
 
