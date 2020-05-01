@@ -19,6 +19,15 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 * Soldering iron
 * Small circuit board and connectors
 
+## Design
+This took two attempts to get right. (Go look through the `git` history if you dare).
+
+The Raspberry Pi runs a [Python script](./scripts/killswitch.py) which listens for `GPIO` input events on Pin 10. Whenever the pin switches from `GPIO.LOW` to `GPIO.HIGH` - we act on this and run the task that kills the required process.
+
+Originally I didn't understand the problem of a "floating" pin, which meant that the GPIO pin was not connected to any circuit, unless the switch was pressed. This made it act like an antenna, and randomly reported it's state as GPIO.HIGH due to electrical interference. This often happened due to nearby high-current motors like a sewing machine, or vacuum cleaner.
+
+Second time around, I designed the circuit correctly, based on the two referenced links at the end. The GPIO Pin 10 is connected to `GND` usually, through a 10kΩ resistor. When the button is pressed, this circuit is instead made directly to the 3.3V output, which signals `HIGH`.
+
 ## Assembly Instructions
 I started by drilling through the moisturiser jar cap, to have somewhere to mount the button. I previously used one of these for my [water level indicator](https://github.com/skhg/water-filter-sensor) so it was another chance to have a nice plain mount for something. Underneath, i mounted the LED module and soldered the wires to the button terminals. In all, 6 wires are required for the button and the LED module.
 
