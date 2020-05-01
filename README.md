@@ -15,7 +15,7 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 * A cap from a moisturiser jar
 * A [3-colour LED module](https://www.amazon.de/dp/B07V6YSGC9/ref=sr_1_3?keywords=arduino+rgb+led+modul&qid=1585509606&sr=8-3)
 * Some ribbon cable
-* A 200Ω resistor
+* A 10kΩ resistor
 * Soldering iron
 * Small circuit board and connectors
 
