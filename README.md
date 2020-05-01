@@ -22,7 +22,7 @@ I used a Raspberry Pi along with [shairport-sync](https://github.com/mikebrady/s
 ## Assembly Instructions
 I started by drilling through the moisturiser jar cap, to have somewhere to mount the button. I previously used one of these for my [water level indicator](https://github.com/skhg/water-filter-sensor) so it was another chance to have a nice plain mount for something. Underneath, i mounted the LED module and soldered the wires to the button terminals. In all, 6 wires are required for the button and the LED module.
 
-<img src="images/IMG_2505.jpeg" width="425" title="Button underside">
+<img src="images/IMG_2505.jpeg" width="425" title="Button underside"> <img src="images/IMG_2623.jpeg" width="425" title="Open Raspi">
 
 The LED module has some built-in resistors so it can be hooked up to a normal 3.3V GPIO pin without any other components required. But the button needs a resistor to ensure we don't blow the circuit if it was pressed too long or shorted. So the next step was to assemble a mini board that will mount on to the Raspberry Pi's GPIO pins.
 
@@ -65,3 +65,5 @@ Some useful references which could help when doing this project
 * https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 * https://www.electronicwings.com/raspberry-pi/raspberry-pi-gpio-access
 * https://www.instructables.com/id/Using-a-RPi-to-Control-an-RGB-LED/
+* https://grantwinney.com/using-pullup-and-pulldown-resistors-on-the-raspberry-pi/
+* https://www.kalitut.com/2017/11/RaspberryPi-GPIO-pull-up-pull-down-resistor.html
