@@ -28,7 +28,7 @@ The LED module has some built-in resistors so it can be hooked up to a normal 3.
 
 <img src="images/killswitch_bb.png" title="Circuit diagram">
 
-And the finished board:
+And the finished adapter board:
 
 <img src="images/IMG_2511.jpeg" width="425" title="Board view 1"> <img src="images/IMG_2512.jpeg" width="425" title="Board view 2">
 
