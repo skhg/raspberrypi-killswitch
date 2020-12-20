@@ -3,6 +3,20 @@
 import os
 import time
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
+import sys
+
+if len(sys.argv) < 2:
+    print("Usage: killswitch.py /path/to/kill_script")
+    exit(1)
+
+full_kill_script_path = ""
+
+if os.path.isfile(sys.argv[1]):
+    full_kill_script_path = os.path.abspath(sys.argv[1])
+    print ("Killswitch script found at " + full_kill_script_path)
+else:
+    print ("No script found at " + sys.argv[1])
+    exit(2)
 
 RED_PIN   = 15
 GREEN_PIN = 13
@@ -51,7 +65,7 @@ def on_button_pushed(channel):
 
         print("Running the kill script...")
 
-        os.system('~/.killswitch') # User-defined executable script here which can do anything
+        os.system(full_kill_script_path) # User-defined executable script here which can do anything
 
         print("Kill script completed.")
 
