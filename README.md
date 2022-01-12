@@ -62,6 +62,9 @@ Install the daemon with `sudo ln -s /home/pi/raspberrypi-killswitch/scripts/kill
 
 I also want to know when music is playing and make use of the 3-colour LED module. So the `shairport-sync` config file comes in handy here. It is set up to call my `lightControl.py` script whenever music starts or stops.
 
+Set the `run_this_before_play_begins` to `/home/pi/raspberrypi-killswitch/scripts/lightControl.py GREEN`
+Set the `run_this_after_play_ends` to `/home/pi/raspberrypi-killswitch/scripts/lightControl.py OFF`
+
 Note: To control GPIO from `shairport-sync`, its user must be in the `gpio` group. This was also a factor in [another project](https://github.com/skhg/shairport-power). Run this command to fix it if you have problems:
 
 ```
