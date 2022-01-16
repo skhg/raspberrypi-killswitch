@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:          myservice
+# Provides:          killswitch-service
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
@@ -41,7 +41,7 @@ do_stop () {
 case "$1" in
 
     start|stop)
-        do_${1}
+        do_"${1}"
         ;;
 
     restart|reload|force-reload)
